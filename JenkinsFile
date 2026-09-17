@@ -1,55 +1,48 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2870
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+pipeline {
+agent any
 
-\f0\fs24 \cf0 pipeline \{\
-    agent any\
-    \
-    stages \{\
-        stage('Build') \{\
-            steps \{\
-                echo 'Task: Compile source code and package application.'\
-                echo 'Tool: Apache Maven (mvn clean package)'\
-            \}\
-        \}\
-        stage('Unit and Integration Tests') \{\
-            steps \{\
-                echo 'Task: Run unit and integration test suites to verify application logic.'\
-                echo 'Tools: JUnit, TestNG'\
-            \}\
-        \}\
-        stage('Code Analysis') \{\
-            steps \{\
-                echo 'Task: Static code analysis for quality, code smells, and standards.'\
-                echo 'Tool: SonarQube'\
-            \}\
-        \}\
-        stage('Security Scan') \{\
-            steps \{\
-                echo 'Task: Vulnerability scanning for dependencies and code flaws.'\
-                echo 'Tool: OWASP Dependency-Check'\
-            \}\
-        \}\
-        stage('Deploy to Staging') \{\
-            steps \{\
-                echo 'Task: Deploy build artifacts to pre-production staging environment.'\
-                echo 'Tool: AWS EC2 / Docker'\
-            \}\
-        \}\
-        stage('Integration Tests on Staging') \{\
-            steps \{\
-                echo 'Task: Validate deployed application functionality in a production-like environment.'\
-                echo 'Tool: Postman / Selenium'\
-            \}\
-        \}\
-        stage('Deploy to Production') \{\
-            steps \{\
-                echo 'Task: Release application to live production environment.'\
-                echo 'Tool: AWS EC2'\
-            \}\
-        \}\
-    \}\
-\}}
+stages {
+    stage('Build') {
+        steps {
+            echo 'Task: Compile source code and package application.'
+            echo 'Tool: Apache Maven (mvn clean package)'
+        }
+    }
+    stage('Unit and Integration Tests') {
+        steps {
+            echo 'Task: Run unit and integration test suites to verify application logic.'
+            echo 'Tools: JUnit, TestNG'
+        }
+    }
+    stage('Code Analysis') {
+        steps {
+            echo 'Task: Static code analysis for quality, code smells, and standards.'
+            echo 'Tool: SonarQube'
+        }
+    }
+    stage('Security Scan') {
+        steps {
+            echo 'Task: Vulnerability scanning for dependencies and code flaws.'
+            echo 'Tool: OWASP Dependency-Check'
+        }
+    }
+    stage('Deploy to Staging') {
+        steps {
+            echo 'Task: Deploy build artifacts to pre-production staging environment.'
+            echo 'Tool: AWS EC2 / Docker'
+        }
+    }
+    stage('Integration Tests on Staging') {
+        steps {
+            echo 'Task: Validate deployed application functionality in a production-like environment.'
+            echo 'Tool: Postman / Selenium'
+        }
+    }
+    stage('Deploy to Production') {
+        steps {
+            echo 'Task: Release application to live production environment.'
+            echo 'Tool: AWS EC2'
+        }
+    }
+}
+}
